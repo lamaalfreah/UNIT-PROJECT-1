@@ -1,7 +1,10 @@
 import cohere
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def summarize(text):
-    co = cohere.Client("XLCLC70MJ3Af9AFaBb8d1v9km3pG582ksTWuluYb")
+    co = cohere.Client(os.environ.get("COHERE_API_KEY"))
     response = co.summarize(
         text=text,
     )
