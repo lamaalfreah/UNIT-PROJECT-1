@@ -4,7 +4,10 @@ from dotenv import load_dotenv
 from ai_services.ai_services import save
 
 load_dotenv()
-co = cohere.Client(os.environ.get("COHERE_API_KEY"))
+api_key = os.environ.get("COHERE_API_KEY")
+if not api_key:
+    raise ValueError("COHERE_API_KEY is missing from environment variables.")
+co = cohere.Client(api_key)
 
 def summarize(text: str, username: str, topic: str) -> str:
     """
