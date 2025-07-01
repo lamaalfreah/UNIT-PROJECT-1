@@ -1,7 +1,7 @@
 import whisper
 import os
 import yt_dlp
-
+from ai_services.ai_services import save
 def download_youtube_audio(url: str, output_path: str = "temp_audio") -> str:
     """Download audio from YouTube and return the mp3 file path using yt-dlp."""
     if not os.path.exists(output_path):
@@ -26,7 +26,7 @@ def download_youtube_audio(url: str, output_path: str = "temp_audio") -> str:
     return os.path.join(output_path, "youtube_audio.mp3")
 
 
-def convert_audio_to_text(source: str, is_youtube: bool = False) -> str:
+def convert_audio_to_text(source: str, username: str, topic: str, is_youtube: bool = False) -> str:
     """
     Converts audio from YouTube or file path to text using Whisper.
     
@@ -45,26 +45,6 @@ def convert_audio_to_text(source: str, is_youtube: bool = False) -> str:
 
     print("Transcribing audio...")
     result = model.transcribe(audio_path)
+    file_path = save(username, topic, result["text"], "transcript")
+    os.system(f"open '{file_path}'") 
     return result["text"]
-
-def save_transcript(username: str, topic: str, text: str):
-    """
-    Save transcribed text in a user/topic folder.
-    
-    :param username: User's name
-    :param topic: Topic selected by user (
-    :param text: The transcribed text
-    """
-    base_path = os.path.join("data", username, topic)
-    os.makedirs(base_path, exist_ok=True)
-
-    # Count existing files to avoid overwriting
-    existing_files = [f for f in os.listdir(base_path) if f.startswith("transcript_")]
-    file_number = len(existing_files) + 1
-
-    file_path = os.path.join(base_path, f"transcript_{file_number}.txt")
-
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.write(text)
-
-    print(f"The text was saved in: {file_path}") 
