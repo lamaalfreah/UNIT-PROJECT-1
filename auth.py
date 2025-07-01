@@ -54,6 +54,7 @@ def register() -> None:
         if username in users:
             print("Username already exists. Try a different one.")
             continue
+
         password: str = getpass.getpass("Create password: ")
         confirm_password: str = getpass.getpass("Confirm password: ")
 
@@ -62,7 +63,7 @@ def register() -> None:
             users[username] = hashed
             save_users(users)
             print("Account created successfully!")
-            break
+            return username
         else:
             print("Password do not match!")
 
@@ -75,11 +76,15 @@ def login() -> None:
     while True:
         username: str = input("Enter username: ")
         password: str = getpass.getpass("Enter password: ")
-
         hashed: str = hash_password(password)
 
         if username in users and users[username] == hashed:
             print("Welcome to EduCLI system")
-            break
+            return username
         else:
             print("Invalid username or password")
+            try_again = input("Do you want to try again? (y/n or type 'reg' to register): ").lower()
+            if try_again == "reg":
+                return ""
+            elif try_again != "y":
+                return ""
