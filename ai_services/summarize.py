@@ -2,9 +2,9 @@ import cohere
 import os
 from dotenv import load_dotenv
 from ai_services.ai_services import save
+
 load_dotenv()
 co = cohere.Client(os.environ.get("COHERE_API_KEY"))
-
 
 def summarize(text: str, username: str, topic: str) -> str:
     """
