@@ -14,7 +14,7 @@ class AIServices:
         :param text: The content to save
         :param label: A label like 'transcript', 'summary', 'question'
         """
-        base_path = os.path.join(self.base_dir, username, topic)
+        base_path = os.path.join(self.base_dir, username, topic, f"{label}s")
         os.makedirs(base_path, exist_ok=True)
 
         # Count existing files with this label
