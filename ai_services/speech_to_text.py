@@ -5,12 +5,15 @@ from ai_services.ai_services import save
 
 def download_youtube_audio(url: str, username: str, topic: str) -> str:
     """
-    Download audio from YouTube and save it in user's topic folder.
-    
-    :param url: YouTube video URL
-    :param username: User name for folder structure
-    :param topic: Topic under the user
-    :return: Path to downloaded mp3 file
+    Downloads audio from a YouTube video and saves it in the user's topic folder.
+
+    Args:
+        url (str): YouTube video URL.
+        username (str): User name for folder structure.
+        topic (str): Topic name under the user folder.
+
+    Returns:
+        str: Path to the downloaded MP3 file.
     """
     try:
         base_path = os.path.join("data", username, topic, "audio")
@@ -45,13 +48,16 @@ def download_youtube_audio(url: str, username: str, topic: str) -> str:
 
 def convert_audio_to_text(source: str, username: str, topic: str, is_youtube: bool = False) -> str:
     """
-    Converts audio from YouTube or file path to text using Whisper.
-    
-    :param source: YouTube URL or path to audio file
-    :param username: User folder name
-    :param topic: Topic folder name under user
-    :param is_youtube: Set to True if source is a YouTube link
-    :return: Transcribed text
+    Converts audio from a YouTube link or local file path to text using Whisper.
+
+    Args:
+        source (str): YouTube URL or path to a local audio file.
+        username (str): User folder name.
+        topic (str): Topic folder name under the user.
+        is_youtube (bool): Set to True if the source is a YouTube link, False if it's a local file.
+
+    Returns:
+        str: The transcribed text from the audio.
     """
     try:
         # Load Whisper model
