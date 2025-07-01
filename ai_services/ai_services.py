@@ -2,10 +2,10 @@ import os
 from datetime import datetime
 
 class AIServices:
-    def __init__(self, base_dir="data"):
+    def __init__(self, base_dir="data") -> None:
         self.base_dir = base_dir
 
-    def save(self, username: str, topic: str, text: str, label: str = "transcript"):
+    def save(self, username: str, topic: str, text: str, label: str = "transcript") -> str:
         """
         Save text in a structured folder under data/{username}/{topic}.
         
