@@ -48,6 +48,8 @@ def convert_audio_to_text(source: str, username: str, topic: str, is_youtube: bo
     Converts audio from YouTube or file path to text using Whisper.
     
     :param source: YouTube URL or path to audio file
+    :param username: User folder name
+    :param topic: Topic folder name under user
     :param is_youtube: Set to True if source is a YouTube link
     :return: Transcribed text
     """
