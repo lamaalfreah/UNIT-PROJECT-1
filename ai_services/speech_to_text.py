@@ -1,7 +1,7 @@
 import whisper
 import os
 import yt_dlp
-from ai_services.ai_services import save
+from ai_services.ai_services import AIServices
 
 def download_youtube_audio(url: str, username: str, topic: str) -> str:
     """
@@ -22,7 +22,7 @@ def download_youtube_audio(url: str, username: str, topic: str) -> str:
         # Count existing files with this label
         existing_files = [f for f in os.listdir(base_path) if f.startswith("audio_")]
         file_number = len(existing_files) + 1
-        filename = f"audio_{file_number}.mp3"
+        filename = f"audio_{file_number}.%(ext)s"
         file_path = os.path.join(base_path, filename)
         
         ydl_opts = {
@@ -39,7 +39,7 @@ def download_youtube_audio(url: str, username: str, topic: str) -> str:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
-        return file_path
+        return os.path.join(base_path, f"audio_{file_number}.mp3")
     
     except Exception as e:
         print("Failed to download audio from YouTube.")
@@ -76,7 +76,7 @@ def convert_audio_to_text(source: str, username: str, topic: str, is_youtube: bo
             
         print("Transcribing audio...")
         result = model.transcribe(audio_path)
-        file_path = save(username, topic, result["text"], "transcript")
+        file_path = AIServices().save(username, topic, result["text"], "transcript")
         os.system(f"open '{file_path}'") 
         return result["text"]
     
