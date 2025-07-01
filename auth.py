@@ -47,18 +47,18 @@ def register() -> None:
     Registers a new user by prompting for username and password.
     Saves the user data to the JSON file.
     """
-    users = load_users()
+    users: dict[str, str] = load_users()
 
     while True:
-        username = input("Enter username: ")
+        username: str = input("Enter username: ")
         if username in users:
             print("Username already exists. Try a different one.")
             continue
-        password = getpass.getpass("Create password: ")
-        confirm_password = getpass.getpass("Confirm password: ")
+        password: str = getpass.getpass("Create password: ")
+        confirm_password: str = getpass.getpass("Confirm password: ")
 
         if password == confirm_password:
-            hashed = hash_password(password)
+            hashed: str = hash_password(password)
             users[username] = hashed
             save_users(users)
             print("Account created successfully!")
@@ -70,13 +70,13 @@ def login() -> None:
     """
     Logs in an existing user by verifying their credentials.
     """
-    users = load_users()
+    users: dict[str, str] = load_users()
 
     while True:
-        username = input("Enter username: ")
-        password = getpass.getpass("Enter password: ")
+        username: str = input("Enter username: ")
+        password: str = getpass.getpass("Enter password: ")
 
-        hashed = hash_password(password)
+        hashed: str = hash_password(password)
 
         if username in users and users[username] == hashed:
             print("Welcome to EduCLI system")
