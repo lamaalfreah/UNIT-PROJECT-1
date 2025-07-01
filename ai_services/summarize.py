@@ -1,7 +1,7 @@
 import cohere
 import os
 from dotenv import load_dotenv
-from ai_services.ai_services import save
+from ai_services.ai_services import AIServices
 
 load_dotenv()
 api_key: str | None = os.environ.get("COHERE_API_KEY")
@@ -24,7 +24,7 @@ def summarize(text: str, username: str, topic: str) -> str:
     """
     try:
         response = co.summarize(text=text)
-        file_path: str = save(username, topic, response.summary, "summary")
+        file_path: str = AIServices().save(username, topic, response.summary, "summary")
         os.system(f"open '{file_path}'") 
         return response.summary
     except Exception as e:
