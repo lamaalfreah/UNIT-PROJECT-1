@@ -1,45 +1,101 @@
-# UNIT-PROJECT-1
+# AI Lecture Toolkit 🤖
 
+A smart, interactive CLI application that helps users extract value from educational audio content. Whether you're a student or a researcher, this tool allows you to **transcribe audio**, **summarize long text**, and **generate intelligent questions** — all within a command-line interface.
 
+---
 
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
+## 📌 Project Requirements (Satisfied)
 
-- Must be interactive on CLI.
-- Use your coding skills in Python accurately.
-- Organize Your Code into modules & (or packages)
-- Use git & Github to track changes in your code.
+- ✅ Fully interactive through the Command Line Interface (CLI)
+- ✅ Pythonic and modular code structure
+- ✅ Organized into packages/modules
+- ✅ Version-controlled with Git and GitHub
 
-## Example Project :  An online Grocery Store :
+---
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+## 🚀 Features & User Stories
 
-### Features & User Stories
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+### 👤 As a user, I can:
+- Register a new account or log in.
+- Create topic-based folders to organize my work.
+- Transcribe audio files or YouTube links into text.
+- Summarize long text using AI.
+- Generate short, relevant questions from any passage.
+- Browse all saved content grouped by topic.
+- Open and delete files directly from the terminal.
 
+---
 
+## 🧪 Usage
 
-#### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+Once you run the project, you'll see a menu:
 
+```
+1. 🎧 Transcribe audio  
+2. 📝 Summarize text  
+3. ❓ Generate questions  
+4. 📁 Browse your content  
+5. ❌ Exit  
+```
 
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
+---
 
-### NOTE: before submitting the final project, please do the following command:
-`pip freeze > requirements.txt` to enable use to know & use the packages used in your project.
+## 🧩 Project Structure
+
+```
+.
+├── main.py                     # Main CLI logic
+├── auth.py                     # Login and registration functions
+├── browse.py                   # File navigation and deletion
+├── ai_services/
+│   ├── summarize.py            # AI-based summarization
+│   ├── question_generator.py   # AI question generator
+│   └── speech_to_text.py       # Whisper audio transcription
+├── data/                       # User data saved here
+│   └── [username]/[topic]/
+└── requirements.txt            # Python dependencies
+```
+
+---
+
+## 🔧 Installation
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+2. **Create and activate a virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate        # On Mac/Linux
+   venv\Scripts\activate           # On Windows
+   ```
+
+3. **Install required packages**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Add your environment variables in `.env`**
+   ```
+   COHERE_API_KEY=your_cohere_api_key
+   ```
+
+5. **Run the app**
+   ```bash
+   python main.py
+   ```
+
+---
+
+## 📦 Dependencies
+
+- [Whisper](https://github.com/openai/whisper) – for audio transcription  
+- [Cohere API](https://cohere.ai) – for summarization and question generation  
+- [Rich](https://github.com/Textualize/rich) – for a beautiful CLI interface  
+- `yt-dlp` – for downloading YouTube audio  
+- `python-dotenv` – for loading API keys securely  
+
+---
