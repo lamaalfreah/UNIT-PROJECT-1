@@ -42,7 +42,6 @@ def main() -> None:
     console.print("[bold cyan]📌 Welcome to the AI Lecture Toolkit![/bold cyan]\n")
 
     username: str = welcome()
-    topic: str = Prompt.ask("📚 Enter the topic")
 
     while True:
         console.print("\n[bold green]Choose a service:[/bold green]")
@@ -55,6 +54,7 @@ def main() -> None:
         choice: str = Prompt.ask("Your choice", choices=["1", "2", "3", "4", "5"])
 
         if choice == "1":
+            topic: str = Prompt.ask("📚 Enter the topic")
             is_youtube: bool = Confirm.ask("Is the audio from YouTube?")
             if is_youtube:
                 url: str = Prompt.ask("Paste the YouTube URL")
@@ -67,12 +67,14 @@ def main() -> None:
                 next_action_flow(text, username, topic, from_step="transcription")
 
         elif choice == "2":
+            topic: str = Prompt.ask("📚 Enter the topic")
             text: str = Prompt.ask("Paste the text to summarize")
             summarize(text, username, topic)
             next_action_flow(text, username, topic, from_step="summary")
 
 
         elif choice == "3":
+            topic: str = Prompt.ask("📚 Enter the topic")
             text: str = Prompt.ask("Paste the text to generate questions from")
             generate_questions(text, username, topic)
             next_action_flow(text, username, topic, from_step="questions")
