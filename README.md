@@ -4,15 +4,6 @@ A smart, interactive CLI application that helps users extract value from educati
 
 ---
 
-## 📌 Project Requirements (Satisfied)
-
-- ✅ Fully interactive through the Command Line Interface (CLI)
-- ✅ Pythonic and modular code structure
-- ✅ Organized into packages/modules
-- ✅ Version-controlled with Git and GitHub
-
----
-
 ## 🚀 Features & User Stories
 
 ### 👤 As a user, I can:
